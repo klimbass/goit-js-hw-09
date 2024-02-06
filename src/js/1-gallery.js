@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
   {
     preview:
@@ -77,9 +80,6 @@ const htmlGalleryItems = images.reduce(
     </li>`),
   ''
 );
-
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
 gallery.insertAdjacentHTML('beforeend', htmlGalleryItems);
