@@ -1,18 +1,18 @@
 const form = document.querySelector('.feedback-form');
 const email = document.querySelector('input[name="email"]');
 const message = document.querySelector('textarea[name="message"]');
-let dataUser = {};
+let formData = {};
 const localStorageKey = 'feedback-form-state';
 const parseSavedData = JSON.parse(localStorage.getItem(localStorageKey));
 
-form.addEventListener('input', setLocale);
+form.addEventListener('input', saveFormData);
 form.addEventListener('submit', submit);
 
-function setLocale() {
-  dataUser.email = form.elements.email.value.trim();
-  dataUser.message = form.elements.message.value.trim();
+function saveFormData() {
+  formData.email = form.elements.email.value.trim();
+  formData.message = form.elements.message.value.trim();
 
-  localStorage.setItem(localStorageKey, JSON.stringify(dataUser));
+  localStorage.setItem(localStorageKey, JSON.stringify(formData));
 }
 if (parseSavedData && parseSavedData.email) {
   email.value = parseSavedData.email;
@@ -24,8 +24,8 @@ if (parseSavedData && parseSavedData.message) {
 
 function submit(event) {
   event.preventDefault();
-  if (dataUser.email && dataUser.message) {
-    console.log(dataUser);
+  if (formData.email && formData.message) {
+    console.log(formData);
     localStorage.removeItem(localStorageKey);
     form.reset();
   } else {
